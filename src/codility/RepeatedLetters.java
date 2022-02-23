@@ -1,4 +1,4 @@
-package miscellaneous;
+package codility;
 
 public class RepeatedLetters {
 }
