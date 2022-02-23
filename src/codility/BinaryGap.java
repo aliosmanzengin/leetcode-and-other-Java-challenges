@@ -1,5 +1,7 @@
 package codility;
 
+import java.util.Arrays;
+
 public class BinaryGap {
 /*
 A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
@@ -20,12 +22,35 @@ N is an integer within the range [1..2,147,483,647].
 Copyright 2009–2022 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
  */
     public static void main(String[] args) {
+        int num= 561892;
+        System.out.println("solution(num) = " + solution(num));
 
     }
 
     static int solution(int N){
+        String str = ""+N;
+        String newN =Integer.toString(Integer.parseInt(str, 10), 2);
+        if (!newN.contains("0") || newN.length() < 2 || newN.startsWith("0")) {
+            System.out.println(" not eligible number");
+            return 0;
+        }
+        int count = 0;
+        int biggestGap =0;
+        System.out.println(newN);
+        for (int i = 1; i < newN.length(); i++) {
 
-        return 0;
+            if (newN.charAt(i) == '0') {
+                count++;
+                System.out.println("count ="+count);
+            }
+            if (count > biggestGap && newN.charAt(i)=='1'){
+               biggestGap = count;
+                System.out.println("biggest gap = "+biggestGap);
+               count = 0;
+            }
+//            System.out.println("i"+i);
+        }
+        return biggestGap;
     }
 }
 
